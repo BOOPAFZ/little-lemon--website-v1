@@ -31,13 +31,13 @@ class MenuItemSerializer(serializers.ModelSerializer):
 @api_view(['POST'])
 def create_reservation(request):
     if request.user.is_authenticated:
-        # Save reservation for the logged-in user
+        
         serializer = ReservationSerializer(data={
-            'user': request.user.id,  # User is automatically authenticated
+            'user': request.user.id, 
             'date': request.data.get('date')
         })
     else:
-        # Save reservation for a guest
+       
         serializer = ReservationSerializer(data={
             'guest_name': request.data.get('guest_name'),
             'guest_email': request.data.get('guest_email'),
@@ -45,7 +45,7 @@ def create_reservation(request):
         })
     
     if serializer.is_valid():
-        serializer.save()  # Save the reservation in the database
+        serializer.save() 
         return Response({"message": "Reservation created successfully"}, status=201)
     else:
         return Response(serializer.errors, status=400)
