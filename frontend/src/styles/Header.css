@@ -7,6 +7,7 @@
 }
 
 .logo-container {
+  cursor: pointer;
   display: flex;
   align-items: center;
 }
