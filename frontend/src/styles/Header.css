@@ -11,12 +11,13 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .header:hover {
-  background: linear-gradient(135deg, #fff, #d6d6d6); /* Subtle hover effect */
+  background: linear-gradient(135deg, #fff, #d6d6d6);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px); 
 }
 
 /* Logo Container Styling */
@@ -46,7 +47,7 @@
 }
 
 .header .logo-text:hover {
-  color: #7a6f3c; /* Subtle hover effect for the logo text */
+  color: #7a6f3c;
 }
 
 /* Navigation Styling */
@@ -54,6 +55,7 @@
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  gap: 20px;
 }
 
 .header .nav-list {
@@ -61,7 +63,6 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  gap: 30px;
 }
 
 .header .nav-item {
@@ -71,16 +72,18 @@
   color: #5a5a5a;
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease, letter-spacing 0.3s ease;
+  padding: 8px 16px;
 }
 
 .header .nav-item:hover {
   color: #a89b5b;
   transform: translateY(-3px);
-  letter-spacing: 1px; /* Adds space on hover for a modern look */
+  letter-spacing: 1px;
+  background-color: rgba(168, 155, 91, 0.1); 
 }
 
 .header .nav-item:active {
-  transform: translateY(1px); /* Subtle active effect */
+  transform: translateY(1px);
 }
 
 /* Cart Icon Styling */
@@ -147,24 +150,24 @@
 .login-button:hover {
   background-color: #7a6f3c;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  transform: translateY(-3px); /* Subtle hover effect */
+  transform: translateY(-3px);
 }
 
 .login-button:active {
-  transform: translateY(1px); /* Active button effect */
+  transform: translateY(1px);
 }
 
 /* Reservations Dropdown Styling */
 .header .reservations-dropdown {
   position: absolute;
-  top: 70px; /* Adjust according to the header height */
+  top: 70px;
   right: 30px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 300px;
   max-height: 300px;
-  overflow-y: auto; /* Adds scroll if the list is too long */
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -173,7 +176,7 @@
 
 .header .reservations-dropdown.show {
   opacity: 1;
-  visibility: visible; /* Make the dropdown visible */
+  visibility: visible;
 }
 
 .header .reservations-button {
@@ -212,11 +215,11 @@
 
 .header .reservation-item:hover {
   background-color: #f1f1f1;
-  transform: translateX(5px); /* Slight slide on hover */
+  transform: translateX(5px);
 }
 
 .header .reservation-item:active {
-  transform: translateX(2px); /* Subtle active effect */
+  transform: translateX(2px);
 }
 
 /* Empty State Styling */
@@ -230,11 +233,59 @@
 
 /* Mobile-Friendly Adjustments */
 @media (max-width: 768px) {
-  .header .reservations-dropdown {
-    width: 90%;
-    right: 5%;
+  .header {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    z-index: 101;
+  }
+
+  .hamburger .bar {
+    height: 3px;
+    width: 25px;
+    background-color: #fff6f6;
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+
+  .header.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    background-color: #f5f5f5; 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .header.open .nav-list {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  .header.open .nav-item {
+    padding: 10px 15px;
+  }
+
+  .hamburger.open .bar {
+    transform: rotate(45deg);
+    background-color: #a89b5b; /* Change color of hamburger bars */
+  }
+
+  .hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: #a89b5b;
   }
 }
-
-
-/* Mobile-Friendly Adjustments */
