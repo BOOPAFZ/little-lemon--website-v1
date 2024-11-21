@@ -1,0 +1,209 @@
+/* Reset all styles within the reservation form component */
+.reservation-form * {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.reservation-form *::before,
+.reservation-form *::after {
+  all: unset;
+  box-sizing: border-box;
+}
+
+/* Responsive styling and layout */
+.reservation-form-page {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, rgba(224, 247, 250, 0.86), rgba(247, 247, 247, 0.58)), url('../assets/images/restaurant_inside.jpg');
+ 
+
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;  /* Keeps the background fixed during scrolling */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.reservation-form-container {
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+  animation: fadeIn 0.7s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reservation-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+.reservation-image {
+  width: 100%;
+  height: 300px;  /* Adjust to desired height */
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the entire section */
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header styling */
+.reservation-form-container h1 {
+  font-size: 2.8em;
+  margin-bottom: 25px;
+  color: #333;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced form group styling */
+.form-group {
+  margin-bottom: 25px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.form-group:hover {
+  transform: translateX(10px);
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.form-group:hover label {
+  color: #a89b5b;
+}
+
+/* Styled input fields with modern effects */
+.form-group input {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* Submit button with modern effects */
+.submit-btn {
+  margin-top: 25px;
+  padding: 14px 35px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #a89b5b;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.submit-btn:hover {
+  background-color: #d4b30e9d;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.3);
+}
+
+.submit-btn:active {
+  background-color: #004085;
+  transform: translateY(0);
+  box-shadow: 0 5px 10px rgba(0, 64, 133, 0.3);
+}
+
+/* Style for success/error messages */
+.message {
+  margin-top: 25px;
+  font-size: 1.1em;
+  color: #28a745;
+  font-weight: 600;
+  animation: fadeInMessage 0.6s ease-in-out;
+}
+
+@keyframes fadeInMessage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .reservation-form-container {
+    padding: 25px;
+    max-width: 90%;
+  }
+
+  .reservation-form-container h1 {
+    font-size: 2.2em;
+  }
+
+  .submit-btn {
+    font-size: 1.1em;
+    padding: 12px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reservation-form-container h1 {
+    font-size: 1.8em;
+  }
+
+  .form-group label {
+    font-size: 1em;
+  }
+
+  .form-group input {
+    font-size: 1em;
+  }
+}
+
+
+/* Carousel Styling */
+

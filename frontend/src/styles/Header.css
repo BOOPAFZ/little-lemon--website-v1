@@ -1,58 +1,240 @@
+/* Base Header Styling */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f5f5f5;
-    padding: 10px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f5f5, #e9e9e9);
+  padding: 20px 30px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo-container {
+.header:hover {
+  background: linear-gradient(135deg, #fff, #d6d6d6); /* Subtle hover effect */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo Container Styling */
+.header .logo-container {
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: transform 0.3s ease;
 }
 
-.logo {
+.header .logo-container:hover {
+  transform: scale(1.05); /* Logo scaling on hover */
+}
+
+.header .logo {
   height: 50px;
-  margin-right: 10px;
+  margin-right: 15px;
+  transition: filter 0.3s ease;
 }
 
-.logo-text {
+.header .logo-text {
   font-family: 'Brush Script MT', cursive;
-  font-size: 24px;
+  font-size: 28px;
   color: #a89b5b;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s ease;
 }
 
-.nav {
+.header .logo-text:hover {
+  color: #7a6f3c; /* Subtle hover effect for the logo text */
+}
+
+/* Navigation Styling */
+.header .nav {
   flex-grow: 1;
   display: flex;
   justify-content: center;
 }
 
-.nav-list {
+.header .nav-list {
   display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 30px;
+}
+
+.header .nav-item {
+  position: relative;
+  font-size: 18px;
+  font-weight: 500;
+  color: #5a5a5a;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.header .nav-item:hover {
+  color: #a89b5b;
+  transform: translateY(-3px);
+  letter-spacing: 1px; /* Adds space on hover for a modern look */
+}
+
+.header .nav-item:active {
+  transform: translateY(1px); /* Subtle active effect */
+}
+
+/* Cart Icon Styling */
+.header .cart-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.header .cart-container:hover {
+  transform: scale(1.1);
+}
+
+.header .cart-icon {
+  margin-right: 40px;
+  font-size: 28px;
+  color: #5a5a5a;
+  transition: color 0.3s ease;
+}
+
+.header .cart-icon:hover {
+  color: #a89b5b;
+}
+
+.header .item-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #a89b5b;
+  color: white;
+  border-radius: 50%;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transform: scale(1);
+  animation: bounce 0.3s infinite alternate;
+}
+
+/* Bounce Animation for item count */
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+/* Login Button Styling */
+.login-button {
+  padding: 12px 25px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #a89b5b;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-button:hover {
+  background-color: #7a6f3c;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px); /* Subtle hover effect */
+}
+
+.login-button:active {
+  transform: translateY(1px); /* Active button effect */
+}
+
+/* Reservations Dropdown Styling */
+.header .reservations-dropdown {
+  position: absolute;
+  top: 70px; /* Adjust according to the header height */
+  right: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-height: 300px;
+  overflow-y: auto; /* Adds scroll if the list is too long */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 50;
+}
+
+.header .reservations-dropdown.show {
+  opacity: 1;
+  visibility: visible; /* Make the dropdown visible */
+}
+
+.header .reservations-button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #a89b5b;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header .reservations-button:hover {
+  background-color: #7a6f3c;
+}
+
+/* Reservations List Styling */
+.header .reservations-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.nav-item {
-  margin: 0 15px;
-  font-size: 18px;
+.header .reservation-item {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
   color: #5a5a5a;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.login-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #a89b5b;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.header .reservation-item:hover {
+  background-color: #f1f1f1;
+  transform: translateX(5px); /* Slight slide on hover */
 }
 
-.login-button:hover {
-  background-color: #7a6f3c;
+.header .reservation-item:active {
+  transform: translateX(2px); /* Subtle active effect */
 }
+
+/* Empty State Styling */
+.header .reservations-dropdown .no-reservations {
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Mobile-Friendly Adjustments */
+@media (max-width: 768px) {
+  .header .reservations-dropdown {
+    width: 90%;
+    right: 5%;
+  }
+}
+
+
+/* Mobile-Friendly Adjustments */

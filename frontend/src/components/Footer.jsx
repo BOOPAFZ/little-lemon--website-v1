@@ -1,12 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import '../styles/Footer.css';
+import logo from '../assets/images/logo.png';
+
+
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
+  const navigate = useNavigate(); 
+
   return (
     <footer className="footer">
-      <div className="footer-section logo-name">
-        <div className="logo">🍋</div>
-        <div className="footer-name">LITTLE LEMON</div>
+      <div className="logo-container" onClick={() => navigate('/')}>
+        <img src={logo} alt="Logo" className="logo" />
+        <span className="logo-text">Little Lemon</span>
       </div>
       <div className="footer-section sitemap">
         <h3>Sitemap</h3>
@@ -30,10 +37,18 @@ const Footer = () => {
       <div className="footer-section connect">
         <h3>Connect With Us</h3>
         <div className="social-icons">
-          <span>📘</span>
-          <span>📷</span>
-          <span>🐦</span>
-          <span>🎥</span>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <FaFacebook className="social-icon" />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <FaInstagram className="social-icon" />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <FaTwitter className="social-icon" />
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+            <FaYoutube className="social-icon" />
+          </a>
         </div>
       </div>
     </footer>

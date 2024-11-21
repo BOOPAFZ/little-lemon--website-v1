@@ -28,24 +28,41 @@ class MenuItemSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'price', 'category', 'image']
 
 
-@api_view(['POST'])
-def create_reservation(request):
-    if request.user.is_authenticated:
+# @api_view(['POST'])
+# def create_reservation(request):
+#     if request.user.is_authenticated:
         
-        serializer = ReservationSerializer(data={
-            'user': request.user.id, 
-            'date': request.data.get('date')
-        })
-    else:
+#         serializer = ReservationSerializer(data={
+#             'user': request.user.id, 
+#             'date': request.data.get('date')
+#         })
+#     else:
        
-        serializer = ReservationSerializer(data={
-            'guest_name': request.data.get('guest_name'),
-            'guest_email': request.data.get('guest_email'),
-            'date': request.data.get('date')
-        })
+#         serializer = ReservationSerializer(data={
+#             'guest_name': request.data.get('guest_name'),
+#             'guest_email': request.data.get('guest_email'),
+#             'date': request.data.get('date')
+#         })
     
-    if serializer.is_valid():
-        serializer.save() 
-        return Response({"message": "Reservation created successfully"}, status=201)
-    else:
-        return Response(serializer.errors, status=400)
+#     if serializer.is_valid():
+#         serializer.save() 
+#         return Response({"message": "Reservation created successfully"}, status=201)
+#     else:
+#         return Response(serializer.errors, status=400)
+
+class ReservationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reservation
+        fields = ['user', 'guest_name', 'guest_email', 'date', 'number_of_people']
+
+    def validate(self, data):
+
+        request = self.context.get('request')
+        
+        if not request:
+            raise serializers.ValidationError("Request is missing in context.")
+
+        if not request.user.is_authenticated:
+            if 'guest_name' not in data or 'guest_email' not in data:
+                raise serializers.ValidationError("Guest name and email are required for non-authenticated users.")
+        return data

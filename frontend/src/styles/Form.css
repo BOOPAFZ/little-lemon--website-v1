@@ -1,87 +1,130 @@
-body {
+/* Reset and global styles */
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: Arial, sans-serif;
-}
+    padding: 0;
+  }
 
-.login-container {
+
+  /* .unified-form-container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
+    
+    padding: 40px;
+    animation: slideIn 0.5s ease;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: calc(100vh - 60px); /* Adjust height minus header */
-    background: linear-gradient(to bottom, #f0e68c9d, #ffffff);
-    margin: 10mm;
-}
-
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    border: 2px solid black; /* Initial border color and width */
-    padding: 150px;
-    position: relative; /* To allow the animation to work correctly */
-    animation: borderAnimation 2s infinite; /* Apply the animation */
-}
+    height: 70vh;
+  }
+   */
 
-/* Keyframes to animate the border */
-@keyframes borderAnimation {
-    0% {
-        border-color: rgb(106, 119, 29);
-        border-width: 2px;
-    }
-    50% {
-        border-color: #dfdc25; /* Change to any color you prefer */
-        border-width: 4px; /* Increase the border width */
-    }
-    100% {
-        border-color: rgb(162, 194, 22);
-        border-width: 2px;
-    }
-}
 
-.input-group {
-    margin-bottom: 15px;
+.unified-form-container {
+    display: flex;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
     width: 100%;
-    max-width: 300px;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+    animation: fadeIn 0.7s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+.unified-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    background-color: #eef7cf;
-    border: 1px solid #9eb352;
-    border-radius: 5px;
-}
-
-.register-link {
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .unified-form h1 {
+    font-size: 2.2em;
     margin-bottom: 20px;
-}
-
-.register-link a {
-    color: blue;
-    text-decoration: none;
-}
-
-.form-button {
-    padding: 10px 20px;
-    background-color: #a9a9a9;
+    color: #a89b5b;
+    text-align: center;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .input-group label {
+    text-align: left;
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  .form-input:focus {
+    border-color: #a89b5b;
+    background-color: #fff;
+    outline: none;
+  }
+  
+  .unified-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    color: #fff;
+    background-color: #a89b5b;
     border: none;
-    border-radius: 5px;
-    color: white;
+    border-radius: 8px;
     cursor: pointer;
-}
-
-.form-button:hover {
-    background-color: #808080;
-}
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+  }
+  
+  .unified-button:hover {
+    background-color: #c4a71593;
+    transform: translateY(-2px);
+  }
+  
+  .unified-button:active {
+    background-color: #a89b5b;
+    transform: translateY(0);
+  }
+  
+  .logout-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #d9534f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #c9302c;
+  }
+  

@@ -1,7 +1,7 @@
 // import React from 'react';
 // import Header from '../components/Header';
 // import '../styles/Register.css';
-// import Footer from "../components/Footer"
+import Footer from "../components/Footer"
 
 // function Register() {
 //     return (
@@ -50,6 +50,7 @@ function Register() {
         <div>
             <Header />
             <Form route='/api/user/register/' method="register" />
+            <Footer />
         </div>
     );
 }

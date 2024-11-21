@@ -42,12 +42,14 @@
 import React from 'react';
 import Header from '../components/Header';
 import Form from '../components/Form';
+import Footer from "../components/Footer"
 
 function Login() {
     return (
         <div>
             <Header />
             <Form route='/api/token/' method="login" />
+            <Footer />
         </div>
     );
 }

@@ -1,0 +1,97 @@
+/* Fullscreen Layout */
+.coming-soon-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #d0dd1a, #feb47b);
+    position: relative;
+    color: #fff;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Coming Soon Text */
+.coming-soon-title {
+  font-size: 4rem;
+  font-weight: 700;
+  animation: fadeIn 2s ease-in-out;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.coming-soon-description {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 15px;
+  animation: fadeIn 2s ease-in-out 1s;
+}
+
+/* Countdown Timer */
+.countdown {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 30px;
+  animation: fadeIn 2s ease-in-out 1.5s;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.countdown-time {
+  font-size: 3.5rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-label {
+  margin-top: 5px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile-Responsive Adjustments */
+@media (max-width: 768px) {
+  .coming-soon-title {
+    font-size: 3rem;
+  }
+
+  .coming-soon-description {
+    font-size: 1.2rem;
+  }
+
+  .countdown {
+    flex-direction: column;
+  }
+
+  .countdown-item {
+    font-size: 1.5rem;
+  }
+
+  .countdown-time {
+    font-size: 2.5rem;
+  }
+}
