@@ -50,19 +50,24 @@ class MenuItemSerializer(serializers.ModelSerializer):
 #     else:
 #         return Response(serializer.errors, status=400)
 
+from rest_framework import serializers
+from .models import Reservation
+
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
-        fields = ['user', 'guest_name', 'guest_email', 'date', 'number_of_people']
+        fields = ['user', 'guest_name', 'guest_email', 'date', 'time', 'number_of_people']  # Make sure 'time' is included if needed
 
     def validate(self, data):
-
         request = self.context.get('request')
-        
+
         if not request:
             raise serializers.ValidationError("Request is missing in context.")
 
+        # Handle unauthenticated users who need guest_name and guest_email
         if not request.user.is_authenticated:
             if 'guest_name' not in data or 'guest_email' not in data:
                 raise serializers.ValidationError("Guest name and email are required for non-authenticated users.")
+        
         return data
+

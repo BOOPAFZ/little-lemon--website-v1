@@ -1,11 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from api.views import CreateUserView
-from django .conf import settings
+from api.views import CreateUserView, create_reservation  # Import views correctly
+from django.conf import settings  # Fixed typo here
 from django.conf.urls.static import static
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,8 +13,8 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='refresh'),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include('api.urls')),
+    path('api/reservation/', create_reservation, name='reservation'),  # Ensure this is correctly imported
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
 
 # # api/urls.py
 # from django.urls import path, include

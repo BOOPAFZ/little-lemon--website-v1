@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api from '../api'; 
+import api from '../api';  
 import { ACCESS_TOKEN } from '../constants';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -7,25 +7,25 @@ import '../styles/BookPage.css';
 
 const ReservationForm = () => {
   const [reservationDate, setReservationDate] = useState('');
-  const [reservationTime, setReservationTime] = useState('');  
+  const [reservationTime, setReservationTime] = useState(''); 
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [guestName, setGuestName] = useState('');
   const [guestEmail, setGuestEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem(ACCESS_TOKEN));  // Check if token exists
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem(ACCESS_TOKEN));  
   const [isLoading, setIsLoading] = useState(false);  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  
+
     const data = {
       date: reservationDate,
       time: reservationTime,  
       number_of_people: numberOfPeople,
     };
 
-   
+    
     if (!isLoggedIn) {
       if (!guestName || !guestEmail) {
         setMessage("Guest name and email are required for non-authenticated users.");
@@ -35,17 +35,16 @@ const ReservationForm = () => {
       data.guest_email = guestEmail;
     }
 
-   
+
     console.log("Request Data:", data);
 
-    
     setIsLoading(true);
     setMessage('');
 
     try {
       const response = await api.post("/api/reservation/", data);  
       setMessage(response.data.message);
-     
+   
       setReservationDate('');
       setReservationTime('');  
       setNumberOfPeople(1);
@@ -59,7 +58,7 @@ const ReservationForm = () => {
         setMessage("An error occurred. Please try again.");
       }
     } finally {
-   
+      
       setIsLoading(false);
     }
   };
@@ -89,8 +88,6 @@ const ReservationForm = () => {
               value={reservationTime}
               onChange={(e) => setReservationTime(e.target.value)}
               required
-              min="09:00"
-              max="12:00"  
             />
           </div>
 
